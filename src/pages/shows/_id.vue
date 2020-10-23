@@ -9,7 +9,7 @@
     export default {
         async asyncData({ store, params }) {
             // If not found then fetch from the API
-            const show = await store.dispatch('getShowById', params.id)
+            const show = await store.dispatch('getShowById', Number(params.id))
 
             return { show }
         }
