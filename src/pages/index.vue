@@ -1,14 +1,11 @@
 <template>
-    <div>
-        <h1>Loading popular shows...</h1>
-        <nuxt-child />
-    </div>
+    <nuxt-child />
 </template>
 
 <script>
     export default {
-        asyncData(ctx) {
-            ctx.store.dispatch('getPopularShows')
+        asyncData({ store }) {
+            store.dispatch('getPopularShows')
         }
     }
 </script>

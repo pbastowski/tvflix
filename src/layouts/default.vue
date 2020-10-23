@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <v-app-bar app :bottom="$vuetify.breakpoint.xs" flat>
+        <v-app-bar app :bottom="$vuetify.breakpoint.xs" flat fixed>
             <v-spacer />
 
             <search />
