@@ -11,7 +11,7 @@
                 style="overflow-x: auto; overflow-y: hidden; display: flex"
                 class="mx-n1 mb-sm-5 mb-1"
             >
-                <show-tile v-for="show in genre.shows" :key="show.id" :show="show" class="mx-2" />
+                <show-tile v-for="show in genre.shows" :key="show.id" :show="show" class="mx-1" />
             </div>
         </div>
     </div>
@@ -20,10 +20,11 @@
 <script>
     export default {
         asyncData({ store, query }) {
-            if (query.q) {
+            const searchText = query.q
+            if (searchText) {
                 // If a query is passed with searchText then we fetch the search results
-                store.state.searchText = query.q
-                store.dispatch('searchByText', query.q)
+                store.state.searchText = searchText
+                store.dispatch('searchByText', searchText)
             } else {
                 // Otherwise we just fetch the popular shows list
                 store.dispatch('getPopularShows')
