@@ -1,5 +1,9 @@
 <template>
-    <v-form v-model="isValid" :style="{ 'min-width': $vuetify.breakpoint.xs ? '' : '50%' }">
+    <v-form
+        @submit.prevent
+        v-model="isValid"
+        :style="{ 'min-width': $vuetify.breakpoint.xs ? '' : '50%' }"
+    >
         <v-text-field
             rounded
             dense
@@ -36,6 +40,8 @@
 
             // SHow the search text if it's available
             this.grow = !!this.searchText
+
+            window.$router = this.$router
         },
 
         computed: {
@@ -57,12 +63,20 @@
             minLength,
 
             fetchResults(searchText, isValid) {
+                // The form can be valid if there is no text or when
+                // there is text that satisfies the validation rules.
+                // In that case we fetch search results.
                 if (isValid && searchText) {
                     this.$store.dispatch('searchByText', searchText)
                     this.$router.push(`/shows?q=${searchText}`)
-                } else if (!searchText) {
+                    console.log('SEARCH', searchText)
+                }
+
+                // If there is no text then we fetch popular shows
+                else if (!searchText) {
                     this.$store.dispatch('getPopularShows')
                     this.$router.push(`/shows`)
+                    console.log('POPULAR')
                 }
             }
         }

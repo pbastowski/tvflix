@@ -2,11 +2,16 @@
     <div style="height: calc(100vh - 82px); overflow-y: scroll; overflow-x: hidden" ref="showList">
         <div v-for="genre in $store.getters.getShows">
             <!-- Genre title and show count -->
-            <h4 style="text-transform: capitalize">{{ genre.genre }} ({{ genre.shows.length }})</h4>
+            <h1 style="text-transform: capitalize; font-weight: 400">
+                {{ genre.genre }} <small>({{ genre.shows.length }})</small>
+            </h1>
 
             <!-- The show list row  -->
-            <div style="height: 200px; overflow-x: scroll; overflow-y: hidden; display: flex">
-                <show-tile v-for="show in genre.shows" :key="show.id" :show="show" />
+            <div
+                style="overflow-x: auto; overflow-y: hidden; display: flex"
+                class="mx-n1 mb-sm-5 mb-1"
+            >
+                <show-tile v-for="show in genre.shows" :key="show.id" :show="show" class="mx-2" />
             </div>
         </div>
     </div>
@@ -25,9 +30,12 @@
             }
         },
 
-        beforeRouteUpdate() {
+        beforeRouteUpdate(to, from, next) {
             // Always scroll the show list to the top when fetching new results
             this.$refs.showList.scrollTop = 0
+
+            // next() must be called to complete the route transition
+            next()
         }
     }
 </script>

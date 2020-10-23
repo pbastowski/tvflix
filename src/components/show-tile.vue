@@ -1,10 +1,11 @@
 <template>
-    <div>
+    <div style="background: rgba(125, 125, 125, 0.1)" class="rounded">
         <v-img
+            class="rounded-sm"
             :lazy-src="(show.image && show.image.medium) || noImageYet"
-            max-height="175"
-            max-width="125"
-            :src="(show.image && show.image.medium) || noImageYet"
+            :height="maxHeight"
+            :width="maxWidth"
+            :src="(show.image && show.image[imgSize]) || noImageYet"
         >
             <template #placeholder>
                 <v-row class="fill-height ma-0" align="center" justify="center">
@@ -12,7 +13,7 @@
                 </v-row>
             </template>
         </v-img>
-        <p :title="show.name">{{ show.name }}</p>
+        <p style="height: 40px" class="mt-1" :title="show.name">{{ show.name }}</p>
     </div>
 </template>
 
@@ -24,6 +25,21 @@
             show: Object
         },
 
-        data: () => ({ noImageYet })
+        data: () => ({ noImageYet }),
+
+        computed: {
+            mobile() {
+                return this.$vuetify.breakpoint.xs
+            },
+            maxWidth() {
+                return this.mobile ? 125 : 250
+            },
+            maxHeight() {
+                return this.mobile ? 175 : 350
+            },
+            imgSize() {
+                return 'medium'
+            }
+        }
     }
 </script>

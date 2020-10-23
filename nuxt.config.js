@@ -1,12 +1,9 @@
-// import vuetify from './vuetify.theme.js'
+const isDev = process.env.NODE_ENV === 'development'
 
-const plugins = [
-    'plugins/main.js'
-    //, 'plugins/store.js'
-]
+// Plugins
+const plugins = ['plugins/main.js']
 
 // Add development-only plugins
-const isDev = process.env.NODE_ENV === 'development'
 if (isDev) plugins.unshift('plugins/dev-only.js')
 
 export default {
