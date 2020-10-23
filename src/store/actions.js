@@ -1,6 +1,3 @@
-// Caching popular shows, as they are not likely to change very often
-let popularShows = null
-
 export async function getShowById({ state, getters }, showId) {
     // Try the store cache first
     let show = getters.getShowById(showId)
@@ -9,6 +6,9 @@ export async function getShowById({ state, getters }, showId) {
     // If not found then fetch from the API
     return this.$axios.$get(`http://api.tvmaze.com/shows/${showId}`)
 }
+
+// Caching popular shows, as they are not likely to change very often
+let popularShows = null
 
 export async function getPopularShows({ state }) {
     // Check if we have popularShows in the cache
