@@ -4,8 +4,8 @@
 
 <script>
     export default {
-        asyncData({ store }) {
-            store.dispatch('getPopularShows')
+        asyncData({ store, redirect }) {
+            redirect(`/shows`)
         }
     }
 </script>

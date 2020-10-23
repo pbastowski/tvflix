@@ -36,7 +36,7 @@ export default {
 
     vuetify: {
         theme: {
-            dark: true
+            // dark: true
         }
     },
 
@@ -55,5 +55,10 @@ export default {
                 content: 'width=device-width, initial-scale=1'
             }
         ]
+    },
+    build: {
+        babel: {
+            // plugins: ['./node_modules/@babel/plugin-proposal-optional-chaining']
+        }
     }
 }

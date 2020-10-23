@@ -10,8 +10,11 @@
             :style="{ 'max-width': grow ? '' : $vuetify.breakpoint.xs ? '70px' : '' }"
             :class="{ grow }"
             :rules="grow ? [allowedInputChars, minLength(3), maxLength(50)] : undefined"
-            v-model="searchText"
-            @input="debounceSearch"
+            :value="searchText"
+            @input="
+                searchText = $event ? $event : ''
+                debounceSearch($event)
+            "
             @focus="grow = true"
             @blur="grow = !!searchText"
         />
@@ -29,7 +32,10 @@
             // Create a debounced method that calls fetchResults
             // - when the user stops typing
             // - and the input is valid, as per the rules prop on text-field
-            this.debounceSearch = debounce(v => this.isValid && this.fetchResults(v), 500)
+            this.debounceSearch = debounce(v => this.fetchResults(v, this.isValid), 500)
+
+            // SHow the search text if it's available
+            this.grow = !!this.searchText
         },
 
         computed: {
@@ -45,13 +51,19 @@
         },
 
         methods: {
+            // Expose validators to the template
             allowedInputChars,
             maxLength,
             minLength,
 
-            async fetchResults(searchText) {
-                await this.$store.dispatch('searchByText', searchText)
-                this.$router.push('/shows')
+            fetchResults(searchText, isValid) {
+                if (isValid && searchText) {
+                    this.$store.dispatch('searchByText', searchText)
+                    this.$router.push(`/shows?q=${searchText}`)
+                } else {
+                    this.$store.dispatch('getPopularShows')
+                    this.$router.push(`/shows`)
+                }
             }
         }
     }

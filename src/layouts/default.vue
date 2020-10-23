@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <v-app-bar app :bottom="$vuetify.breakpoint.xs" flat fixed>
+        <v-app-bar app :bottom="$vuetify.breakpoint.xs" flat>
             <v-spacer />
 
             <search />
@@ -16,17 +16,5 @@
                 <nuxt></nuxt>
             </v-container>
         </v-main>
-
-        <!--        <v-footer app> This is the app footer, if we have one </v-footer>-->
     </v-app>
 </template>
-
-<script>
-    import OptionsMenu from '~/components/options-menu'
-    export default {
-        components: { OptionsMenu },
-        data: () => ({
-            showLeftDrawer: false
-        })
-    }
-</script>
