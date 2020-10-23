@@ -10,5 +10,5 @@ export const popularInGenre = state => genre =>
         .reverse()
 
 // List of popular shows ordered by genre. Each item is a list of shows for that genre.
-export const popularShows = (state, getters) =>
+export const getShows = (state, getters) =>
     getters.sortedGenres.map(genre => ({ genre, shows: getters.popularInGenre(genre) }))

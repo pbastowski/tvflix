@@ -1,7 +1,0 @@
-<script>
-    export default {
-        beforeCreate() {
-            this.$router.push('/shows')
-        }
-    }
-</script>

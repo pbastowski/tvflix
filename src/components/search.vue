@@ -60,7 +60,7 @@
                 if (isValid && searchText) {
                     this.$store.dispatch('searchByText', searchText)
                     this.$router.push(`/shows?q=${searchText}`)
-                } else {
+                } else if (!searchText) {
                     this.$store.dispatch('getPopularShows')
                     this.$router.push(`/shows`)
                 }

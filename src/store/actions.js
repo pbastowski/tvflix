@@ -6,9 +6,10 @@ export async function searchByText({ state }, searchText) {
     state.shows = await this.$axios
         .$get(`http://api.tvmaze.com/search/shows?q=${searchText}`)
         .then(shows =>
-            shows.map(show => {
-                show.show.score = show.score
-                return show.show
+            // de nest the shows
+            shows.map(result => {
+                result.show.score = result.score
+                return result.show
             })
         )
         .then(nominalizeData)
