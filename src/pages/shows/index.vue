@@ -6,7 +6,7 @@
 
             <!-- The show list row  -->
             <div style="height: 200px; overflow-x: scroll; overflow-y: hidden; display: flex">
-                <show-tile v-for="show in genre.shows" :show="show" />
+                <show-tile v-for="show in genre.shows" :key="show.id" :show="show" />
             </div>
         </div>
     </div>

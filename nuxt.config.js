@@ -36,7 +36,7 @@ export default {
 
     vuetify: {
         theme: {
-            // dark: true
+            dark: true
         }
     },
 
