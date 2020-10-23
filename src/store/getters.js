@@ -12,3 +12,6 @@ export const popularInGenre = state => genre =>
 // List of popular shows ordered by genre. Each item is a list of shows for that genre.
 export const getShows = (state, getters) =>
     getters.sortedGenres.map(genre => ({ genre, shows: getters.popularInGenre(genre) }))
+
+// Return the show given its id
+export const getShowById = state => id => state.shows.find(show => show.id === id)

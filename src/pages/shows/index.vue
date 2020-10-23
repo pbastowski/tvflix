@@ -1,5 +1,5 @@
 <template>
-    <div style="height: calc(100vh - 82px); overflow-y: scroll; overflow-x: hidden" ref="showList">
+    <div ref="showList" style="overflow-y: scroll; overflow-x: hidden">
         <div v-for="genre in $store.getters.getShows">
             <!-- Genre title and show count -->
             <h1 style="text-transform: capitalize; font-weight: 400">
@@ -11,7 +11,13 @@
                 style="overflow-x: auto; overflow-y: hidden; display: flex"
                 class="mx-n1 mb-sm-5 mb-1"
             >
-                <show-tile v-for="show in genre.shows" :key="show.id" :show="show" class="mx-1" />
+                <show-tile
+                    v-for="show in genre.shows"
+                    :key="show.id"
+                    :show="show"
+                    class="mx-1"
+                    @click.native="$router.push(`/shows/${show.id}`)"
+                />
             </div>
         </div>
     </div>
