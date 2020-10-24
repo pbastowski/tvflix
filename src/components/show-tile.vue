@@ -12,8 +12,10 @@
                     <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
                 </v-row>
             </template>
+            <h3 class="show-name" :title="show.name">
+                {{ show.name }}
+            </h3>
         </v-img>
-        <p style="height: 40px" class="mt-1" :title="show.name">{{ show.name }}</p>
     </div>
 </template>
 
@@ -43,3 +45,20 @@
         }
     }
 </script>
+
+<style scoped>
+    .show-name {
+        position: absolute;
+        bottom: 5px;
+        left: 5px;
+        right: 5px;
+        color: white;
+        font-weight: 400;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 5px;
+        border-radius: 2px;
+    }
+    .show-name:hover {
+        background: rgba(0, 0, 0, 0.7);
+    }
+</style>
