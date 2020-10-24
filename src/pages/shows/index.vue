@@ -1,16 +1,16 @@
 <template>
-    <div ref="showList" style="overflow-y: auto; overflow-x: hidden">
+    <div ref="showList" class="overflow-y-auto overflow-x-hidden">
         <div v-for="genre in $store.getters.getShows">
             <!-- Genre title and show count -->
-            <h1 style="text-transform: capitalize; font-weight: 400">
+            <div
+                class="text-sm-h4 text-xs-h6 text-capitalize"
+                :class="[{ 'font-weight-light': $vuetify.breakpoint.smAndUp }]"
+            >
                 {{ genre.genre }} <small>({{ genre.shows.length }})</small>
-            </h1>
+            </div>
 
             <!-- The show list row  -->
-            <div
-                style="overflow-x: auto; overflow-y: hidden; display: flex"
-                class="mx-n1 mb-sm-5 mb-1"
-            >
+            <div class="overflow-x-auto overflow-y-hidden d-flex mx-n1 mb-sm-8 mb-4">
                 <show-tile
                     v-for="show in genre.shows"
                     :key="show.id"
@@ -25,7 +25,7 @@
 
 <script>
     export default {
-        asyncData({ store, query }) {
+        async fetch({ store, query }) {
             const searchText = query.q
             if (searchText) {
                 // If a query is passed with searchText then we fetch the search results

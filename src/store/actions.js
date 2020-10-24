@@ -15,13 +15,13 @@ export async function getPopularShows({ state }) {
     if (popularShows) return (state.shows = popularShows)
 
     // If not then fetch them from the API - this will be very fast on a fast network
-    popularShows = state.shows = await this.$axios
+    return (popularShows = state.shows = await this.$axios
         .$get('http://api.tvmaze.com/shows')
-        .then(nominalizeData)
+        .then(nominalizeData))
 }
 
 export async function searchByText({ state }, searchText) {
-    state.shows = await this.$axios
+    return (state.shows = await this.$axios
         .$get(`http://api.tvmaze.com/search/shows?q=${searchText}`)
         .then(shows =>
             // de nest the shows
@@ -30,7 +30,7 @@ export async function searchByText({ state }, searchText) {
                 return result.show
             })
         )
-        .then(nominalizeData)
+        .then(nominalizeData))
 }
 
 // Do some data transforms

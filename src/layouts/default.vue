@@ -1,6 +1,7 @@
 <template>
     <v-app>
         <v-app-bar app :bottom="$vuetify.breakpoint.xs" flat>
+            <v-btn icon to="/"><v-icon>mdi mdi-home</v-icon></v-btn>
             <v-spacer />
 
             <search />

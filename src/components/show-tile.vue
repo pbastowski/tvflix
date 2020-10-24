@@ -49,9 +49,9 @@
 <style scoped>
     .show-name {
         position: absolute;
-        bottom: 5px;
-        left: 5px;
-        right: 5px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
         color: white;
         font-weight: 400;
         background: rgba(0, 0, 0, 0.3);
