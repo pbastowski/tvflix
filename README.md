@@ -60,7 +60,7 @@ Yes, unfortunately axios has trouble with CORS and specifically with the tvmaze 
 
 The way to get around this problem is to use fetch() with a very specific header, please see `src/store/actions.js` for the details.
 
-> By the way, jQuery.ajax also works pit of the box. 
+> By the way, jQuery.ajax also works out of the box :)
 
 ### The design
 
@@ -72,11 +72,12 @@ Clicking a show image will take the user to a details page that gives the user a
 
 There could be far more work done on this, but as a demonstration of how to do this it is sufficient.
 
-### The architecture elements
+### The technical architecture elements
 
-- the 
+- landing pages
+- reusable components 
 - file based vue-router
 - file based vuex store
-- split between landing pages and components
+- api access through vuex actions
 
 ... WIP
