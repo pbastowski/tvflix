@@ -3,3 +3,5 @@ dist
 .nuxt
 package-lock.json
 .idea
+
+.vercel

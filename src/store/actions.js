@@ -1,3 +1,5 @@
+const BASE_URL = 'https://api.tvmaze.com'
+
 export async function getShowById({ state, getters }, showId) {
     // Try the store cache first
     // let show = getters.getShowById(showId)
@@ -5,7 +7,7 @@ export async function getShowById({ state, getters }, showId) {
 
     // If not found then fetch from the API
     return this.$axios
-        .$get(`http://api.tvmaze.com/shows/${showId}?embed[]=episodes&embed[]=cast&embed[]=crew`)
+        .$get(`${BASE_URL}/shows/${showId}?embed[]=episodes&embed[]=cast&embed[]=crew`)
         .then(show => {
             if (show._embedded.episodes.length > 0) {
                 show.seasons = new Set(show._embedded.episodes.map(ep => ep.season)).size
@@ -31,13 +33,13 @@ export async function getPopularShows({ state }) {
 
     // If not then fetch them from the API - this will be very fast on a fast network
     return (popularShows = state.shows = await this.$axios
-        .$get('http://api.tvmaze.com/shows')
+        .$get('${BASE_URL}/shows')
         .then(nominalizeData))
 }
 
 export async function searchByText({ state }, searchText) {
     return (state.shows = await this.$axios
-        .$get(`http://api.tvmaze.com/search/shows?q=${searchText}`)
+        .$get(`${BASE_URL}/search/shows?q=${searchText}`)
         .then(shows =>
             // de nest the shows
             shows.map(result => {
