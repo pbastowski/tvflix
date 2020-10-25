@@ -67,3 +67,5 @@ There could be far more work done on this, but as a demonstration of how to do t
 - file based vue-router
 - file based vuex store
 - split between landing pages and components
+
+... WIP
