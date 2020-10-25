@@ -12,12 +12,11 @@ export async function getShowById({ state, getters }, showId) {
             if (show._embedded.cast.length > 0)
                 show.cast = show._embedded.cast.map(item => item.person.name)
             if (show._embedded.crew.length > 0) {
-                show.director = (
-                    show._embedded.crew.find(item => item.type === 'Director Of Photography') || {}
-                ).person.name
-                show._embedded.crew = []
+                show.directors = show._embedded.crew
+                    .filter(item => item.type.toLowerCase().includes('director'))
+                    .map(item => item.person?.name)
             }
-            return show
+            return { ...show, _embedded: undefined }
         })
 }
 

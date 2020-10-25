@@ -1,15 +1,6 @@
 <template>
     <v-app>
-        <v-app-bar app :bottom="$vuetify.breakpoint.xs" flat>
-            <v-btn icon to="/"><v-icon>mdi mdi-home</v-icon></v-btn>
-            <v-spacer />
-
-            <search />
-
-            <v-spacer />
-
-            <options-menu />
-        </v-app-bar>
+        <app-bar />
 
         <!-- Sizes your content based upon application components -->
         <v-main>
