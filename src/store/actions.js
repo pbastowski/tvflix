@@ -47,7 +47,7 @@ export async function getPopularShows({ state }) {
     return popularShows
 }
 
-export async function searchByText({ state }, searchText) {
+export async function getShowBySearchtext({ state }, searchText) {
     return (state.shows = await fetch(`${BASE_URL}/search/shows?q=${searchText}`, config)
         .then(d => d.json())
 

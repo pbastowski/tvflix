@@ -30,7 +30,7 @@
             if (searchText) {
                 // If a query is passed with searchText then we fetch the search results
                 store.state.searchText = searchText
-                store.dispatch('searchByText', searchText)
+                store.dispatch('getShowBySearchtext', searchText)
             } else {
                 // Otherwise we just fetch the popular shows list
                 store.dispatch('getPopularShows')

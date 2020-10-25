@@ -63,7 +63,7 @@
                 // there is text that satisfies the validation rules.
                 // In that case we fetch search results.
                 if (isValid && searchText) {
-                    this.$store.dispatch('searchByText', searchText)
+                    this.$store.dispatch('getShowBySearchtext', searchText)
                     this.$router.push(`/shows?q=${searchText}`)
                 }
 
