@@ -1,11 +1,12 @@
 <template>
     <!-- On phones show without a card/border -->
-    <div v-if="isMobile" class="overflow-y-auto overflow-x-hidden">
+    <div v-if="isMobile" class="overflow-y-auto overflow-x-hidden" ref="showList">
         <show-details :show="show" />
     </div>
 
     <!-- On all other larger devices show the show details in a card -->
     <v-card
+        ref="showList"
         v-else
         class="col-xs-12 col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 overflow-y-auto overflow-x-hidden"
     >
@@ -20,6 +21,14 @@
             const show = await store.dispatch('getShowById', Number(params.id))
 
             return { show, showCastMore: false }
+        },
+
+        beforeRouteUpdate(to, from, next) {
+            // Always scroll the show list to the top when fetching new results
+            this.$refs.showList.scrollIntoView()
+
+            // next() must be called to complete the route transition
+            next()
         }
     }
 </script>

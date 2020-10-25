@@ -39,7 +39,7 @@
 
         beforeRouteUpdate(to, from, next) {
             // Always scroll the show list to the top when fetching new results
-            this.$refs.showList.scrollTop = 0
+            this.$refs.showList.scrollIntoView()
 
             // next() must be called to complete the route transition
             next()
