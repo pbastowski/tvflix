@@ -2,13 +2,15 @@
 
 Try trhe TVflix web app [here](https://tvflix.pbastowski.vercel.app)
 
-## Running locally
+## Running TVflix locally
 
 1. Clone this repository to your local machine and then go to the folder where it was cloned to
 
 2. `npm install`
 
 3. `npm run dev`
+
+Nuxt will start up a dev server on http://localhost:3000 where you can see the app running in your browser. 
 
 ## Architecture choices
 
@@ -19,6 +21,7 @@ This app uses the following front-end frameworks and libraries
 - Nuxt - the Vue full-stack framework (not using any SSR in this app)
 - Vue - this app is built with Vue
 - Vuetify - the best Vue UI component framework
+- fetch API
 
 ### Why the above?
 
@@ -50,6 +53,14 @@ Here is a quote from the Vuetify web site
 > Vuetify is a Vue UI Library with beautifully handcrafted Material Components. No design skills required — everything you need to create amazing applications is at your fingertips.
 
 Well, you'll still need to be able to design the actual web app layouts, but at least most of the design language is taken care of for you. I have used this component framework in many Vue apps, since it was pre version 1. It has saved me countless hours of development work.
+
+#### fetch API - seriously?
+
+Yes, unfortunately axios has trouble with CORS and specifically with the tvmaze public API. There are documented issues about CORS issues in AXIOS on its github repo. 
+
+The way to get around this problem is to use fetch() with a very specific header, please see `src/store/actions.js` for the details.
+
+> By the way, jQuery.ajax also works pit of the box. 
 
 ### The design
 
