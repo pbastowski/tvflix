@@ -3,6 +3,7 @@
         <v-row no-gutters>
             <v-col class="col-9 col-sm-6">
                 <v-img
+                    :contain="!isMobile"
                     class="rounded-sm mr-3"
                     max-height="450"
                     :lazy-src="(show.image && show.image.medium) || noImageYet"

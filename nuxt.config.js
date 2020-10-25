@@ -8,28 +8,15 @@ if (isDev) plugins.unshift('plugins/dev-only.js')
 
 export default {
     ssr: false,
-    srcDir: 'src/',
+    srcDir: 'src',
     components: true,
 
-    plugins, // plugins are determined above, depending on whether or not we are running in production mode
-    css: [(isDev && '@/assets/main.css') || undefined],
+    // plugins are scripts that run before the app starts
+    // They are determined above, depending on whether or not we are running in production mode
+    plugins,
 
-    modules: ['@nuxtjs/axios', '@nuxtjs/dayjs', '@nuxtjs/toast'],
+    modules: ['@nuxtjs/axios'],
     buildModules: ['@nuxtjs/vuetify'],
-
-    toast: {
-        position: 'top-right',
-        register: [
-            // Register custom toasts
-            {
-                name: 'warning',
-                message: 'Oops...Something went wrong',
-                options: {
-                    type: 'warning'
-                }
-            }
-        ]
-    },
 
     vuetify: {
         theme: {
@@ -52,10 +39,11 @@ export default {
                 content: 'width=device-width, initial-scale=1'
             }
         ]
+        // link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
     },
     build: {
         babel: {
-            // plugins: ['./node_modules/@babel/plugin-proposal-optional-chaining']
+            plugins: ['./node_modules/@babel/plugin-proposal-optional-chaining']
         }
     }
 }
