@@ -1,10 +1,24 @@
 export async function getShowById({ state, getters }, showId) {
     // Try the store cache first
-    let show = getters.getShowById(showId)
-    if (show) return show
+    // let show = getters.getShowById(showId)
+    // if (show) return show
 
     // If not found then fetch from the API
-    return this.$axios.$get(`http://api.tvmaze.com/shows/${showId}`)
+    return this.$axios
+        .$get(`http://api.tvmaze.com/shows/${showId}?embed[]=episodes&embed[]=cast&embed[]=crew`)
+        .then(show => {
+            if (show._embedded.episodes.length > 0)
+                show.seasons = new Set(show._embedded.episodes.map(ep => ep.season)).size
+            if (show._embedded.cast.length > 0)
+                show.cast = show._embedded.cast.map(item => item.person.name)
+            if (show._embedded.crew.length > 0) {
+                show.director = (
+                    show._embedded.crew.find(item => item.type === 'Director Of Photography') || {}
+                ).person.name
+                show._embedded.crew = []
+            }
+            return show
+        })
 }
 
 // Caching popular shows, as they are not likely to change very often
