@@ -33,7 +33,7 @@ export async function getPopularShows({ state }) {
 
     // If not then fetch them from the API - this will be very fast on a fast network
     return (popularShows = state.shows = await this.$axios
-        .$get('${BASE_URL}/shows')
+        .$get(`${BASE_URL}/shows`)
         .then(nominalizeData))
 }
 
