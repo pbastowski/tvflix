@@ -1,6 +1,6 @@
 <template>
     <!-- On phones show without a card/border -->
-    <div v-if="$vuetify.breakpoint.xs" class="overflow-y-auto overflow-x-hidden">
+    <div v-if="isMobile" class="overflow-y-auto overflow-x-hidden">
         <show-details :show="show" />
     </div>
 

@@ -19,7 +19,7 @@
                 </v-img>
             </v-col>
 
-            <v-col class="text-body-2">
+            <v-col class="text-body-2 col-sm-6">
                 <!-- Cast -->
                 <p>
                     <span class="grey--text">Cast: </span>{{ castShort }}
@@ -37,7 +37,7 @@
             </v-col>
         </v-row>
 
-        <v-row no-gutters class="mt-3 text-body-1">
+        <v-row no-gutters class="mt-5 text-body-1">
             <v-col>
                 <!-- Show Name -->
                 <h2 class="show-name" :title="show.name">

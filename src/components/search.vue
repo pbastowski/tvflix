@@ -1,9 +1,5 @@
 <template>
-    <v-form
-        @submit.prevent
-        v-model="isValid"
-        :style="{ 'min-width': $vuetify.breakpoint.xs ? '' : '50%' }"
-    >
+    <v-form @submit.prevent v-model="isValid" :style="{ 'min-width': isMobile ? '' : '50%' }">
         <v-text-field
             rounded
             dense
@@ -11,7 +7,7 @@
             prepend-inner-icon="mdi-magnify"
             outlined
             :clearable="grow"
-            :style="{ 'max-width': grow ? '' : $vuetify.breakpoint.xs ? '70px' : '' }"
+            :style="{ 'max-width': grow ? '' : isMobile ? '70px' : '' }"
             :class="{ grow }"
             :rules="grow ? [allowedInputChars, minLength(3), maxLength(50)] : undefined"
             :value="searchText"

@@ -1,5 +1,5 @@
 <template>
-    <v-menu left :top="$vuetify.breakpoint.xs" :bottom="!$vuetify.breakpoint.xs" offset-y>
+    <v-menu left :top="isMobile" :bottom="!isMobile" offset-y>
         <template #activator="{ on, attrs }">
             <v-app-bar-nav-icon v-bind="attrs" v-on="on" />
         </template>

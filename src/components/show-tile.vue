@@ -30,14 +30,11 @@
         data: () => ({ noImageYet }),
 
         computed: {
-            mobile() {
-                return this.$vuetify.breakpoint.xs
-            },
             maxWidth() {
-                return this.mobile ? 125 : 250
+                return this.isMobile ? 125 : 250
             },
             maxHeight() {
-                return this.mobile ? 175 : 350
+                return this.isMobile ? 175 : 350
             },
             imgSize() {
                 return 'medium'
