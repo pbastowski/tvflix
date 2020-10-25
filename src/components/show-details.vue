@@ -38,6 +38,12 @@
                     ><span class="text-capitalize">{{ genres }}</span>
                 </p>
 
+                <!-- Language -->
+                <p>
+                    <span class="grey--text">Language: </span
+                    ><span class="text-capitalize">{{ show.language }}</span>
+                </p>
+
                 <!-- Status -->
                 <p>
                     <span class="grey--text">Status: </span

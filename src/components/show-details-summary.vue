@@ -24,7 +24,10 @@
                 <v-spacer />
 
                 <!-- IMDB link -->
-                <a class="ml-8" :href="`https://imdb.com/title/${show.externals.imdb}`"
+                <a
+                    v-if="show.externals && show.externals.imdb"
+                    class="ml-8"
+                    :href="`https://imdb.com/title/${show.externals.imdb}`"
                     ><img src="~/assets/imdb-logo.svg" alt="imdb logo" height="16px;"
                 /></a>
             </div>
