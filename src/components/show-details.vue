@@ -1,7 +1,7 @@
 <template>
     <div class="text-body-1 text-sm-subtitle-1">
         <v-row no-gutters>
-            <v-col class="col-9 col-sm-6">
+            <v-col class="col-9 col-sm-12">
                 <v-img
                     :contain="!isMobile"
                     class="rounded-sm mr-3"
@@ -20,13 +20,13 @@
                 </v-img>
             </v-col>
 
-            <v-col class="text-body-2 col-sm-6 px-sm-5">
+            <v-col class="text-body-2 col-sm-12 px-xs-5 mt-sm-8">
                 <!-- Summary for not mobile -->
                 <show-details-summary v-if="!isMobile" :show="show" />
 
                 <!-- Cast -->
-                <p>
-                    <span class="grey--text">Cast: </span>{{ castShort }}
+                <p v-if="castShort">
+                    <span class="grey--text">Cast: </span>{{ isMobile ? castShort : castFull }}
                     <template v-if="castMore"
                         ><br />
                         <nuxt-link to="#cast-full" class="grey--text">more</nuxt-link>
@@ -34,19 +34,19 @@
                 </p>
 
                 <!-- Genres -->
-                <p>
+                <p v-if="genres">
                     <span class="grey--text">Genres: </span
                     ><span class="text-capitalize">{{ genres }}</span>
                 </p>
 
                 <!-- Language -->
-                <p>
+                <p v-if="show.language">
                     <span class="grey--text">Language: </span
                     ><span class="text-capitalize">{{ show.language }}</span>
                 </p>
 
                 <!-- Status -->
-                <p>
+                <p v-if="show.status">
                     <span class="grey--text">Status: </span
                     ><span class="text-capitalize">{{ show.status }}</span>
                 </p>
@@ -57,7 +57,7 @@
         <show-details-summary v-if="isMobile" :show="show" class="mt-5" />
 
         <!-- More details -->
-        <v-row no-gutters class="mt-3 mt-sm-5">
+        <v-row no-gutters class="mt-3 mt-sm-5" v-if="directors || (castFull && isMobile)">
             <v-col>
                 <h2 class="mb-3 font-weight-light">About {{ show.name }}</h2>
                 <p v-if="directors">
@@ -67,7 +67,7 @@
                         </span></a
                     >{{ directors }}
                 </p>
-                <p>
+                <p v-if="castFull && isMobile">
                     <a name="cast-full"><span class="grey--text">Full cast: </span></a
                     >{{ castFull }}
                 </p>
