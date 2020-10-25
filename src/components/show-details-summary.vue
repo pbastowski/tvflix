@@ -9,16 +9,12 @@
                 </h2>
                 <v-spacer />
 
-                <!-- rating -->
-                <h4 v-if="show.rating.average" class="ml-5">
-                    <v-icon color="yellow darken-1">mdi mdi-star</v-icon> {{ show.rating.average }}
-                    <span class="grey--text font-weight-light">/10</span>
-                </h4>
+                <show-rating :rating="show.rating.average" />
             </div>
 
             <div class="font-weight-medium mt-1 d-flex">
                 <!-- Year premiered, number of seasons, episode count -->
-                <span>{{ show.premiered.slice(0, 4) }}</span>
+                <span v-if="show.premiered">{{ show.premiered.slice(0, 4) }}</span>
                 <span v-if="show.seasons" class="ml-3"
                     >{{ show.seasons }} {{ pluralize('season', show.seasons) }}</span
                 >
@@ -41,10 +37,6 @@
 </template>
 
 <script>
-    import imdbLogo from '@/assets/imdb-logo.svg'
-
-    console.log('LOGO:', imdbLogo)
-
     export default {
         props: { show: Object }
     }

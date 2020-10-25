@@ -37,6 +37,12 @@
                     <span class="grey--text">Genres: </span
                     ><span class="text-capitalize">{{ genres }}</span>
                 </p>
+
+                <!-- Status -->
+                <p>
+                    <span class="grey--text">Status: </span
+                    ><span class="text-capitalize">{{ show.status }}</span>
+                </p>
             </v-col>
         </v-row>
 
@@ -66,23 +72,26 @@
 </template>
 
 <script>
+    const noImageYet = require('~/assets/no-img-portrait-text.png')
+
     export default {
         props: { show: Object },
         computed: {
+            noImageYet: () => noImageYet,
             castFull() {
-                return this.show.cast.join(', ')
+                return this.show?.cast?.join(', ')
             },
             castShort() {
-                return this.show.cast.slice(0, 4).join(', ')
+                return this.show?.cast?.slice(0, 4).join(', ')
             },
             castMore() {
-                return this.show.cast.length > 4
+                return this.show?.cast?.length > 4
             },
             genres() {
-                return this.show.genres.join(', ')
+                return this.show?.genres?.join(', ')
             },
             directors() {
-                return this.show.directors.join(', ')
+                return this.show?.directors?.join(', ')
             }
         }
     }

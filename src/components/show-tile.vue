@@ -12,9 +12,13 @@
                     <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
                 </v-row>
             </template>
-            <h3 class="show-name" :title="show.name">
-                {{ show.name }}
-            </h3>
+            <div class="d-flex">
+                <h3 class="show-name" :title="show.name">
+                    {{ show.name }}
+                </h3>
+                <v-spacer />
+                <show-rating :rating="show.rating.average" minimal small class="mr-1" />
+            </div>
         </v-img>
     </div>
 </template>
