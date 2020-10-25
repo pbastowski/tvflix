@@ -1,4 +1,11 @@
+import $ from 'jquery'
+
 const BASE_URL = 'https://api.tvmaze.com'
+const config = {
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
+}
 
 export async function getShowById({ state, getters }, showId) {
     // Try the store cache first
@@ -6,8 +13,9 @@ export async function getShowById({ state, getters }, showId) {
     // if (show) return show
 
     // If not found then fetch from the API
-    return this.$axios
-        .$get(`${BASE_URL}/shows/${showId}?embed[]=episodes&embed[]=cast&embed[]=crew`)
+    return fetch(`${BASE_URL}/shows/${showId}?embed[]=episodes&embed[]=cast&embed[]=crew`, config)
+        .then(d => d.json())
+
         .then(show => {
             if (show._embedded.episodes.length > 0) {
                 show.seasons = new Set(show._embedded.episodes.map(ep => ep.season)).size
@@ -32,14 +40,26 @@ export async function getPopularShows({ state }) {
     if (popularShows) return (state.shows = popularShows)
 
     // If not then fetch them from the API - this will be very fast on a fast network
-    return (popularShows = state.shows = await this.$axios
-        .$get(`${BASE_URL}/shows`)
-        .then(nominalizeData))
+    // return (popularShows = state.shows = await this.$axios
+    //     .$get(`${BASE_URL}/shows`, config)
+
+    // $.get(`${BASE_URL}/shows`, data => {
+    //     console.log('JQ:', data)
+    // })
+
+    popularShows = state.shows = await fetch(`${BASE_URL}/shows`, config)
+        .then(d => d.json())
+        .then(nominalizeData)
+
+    return popularShows
 }
+// fetch(`${BASE_URL}/search/shows?q=${searchText}`, config)
+//     .then(d => d.json())
 
 export async function searchByText({ state }, searchText) {
-    return (state.shows = await this.$axios
-        .$get(`${BASE_URL}/search/shows?q=${searchText}`)
+    return (state.shows = await fetch(`${BASE_URL}/search/shows?q=${searchText}`, config)
+        .then(d => d.json())
+
         .then(shows =>
             // de nest the shows
             shows.map(result => {
