@@ -7,8 +7,10 @@ export async function getShowById({ state, getters }, showId) {
     return this.$axios
         .$get(`http://api.tvmaze.com/shows/${showId}?embed[]=episodes&embed[]=cast&embed[]=crew`)
         .then(show => {
-            if (show._embedded.episodes.length > 0)
+            if (show._embedded.episodes.length > 0) {
                 show.seasons = new Set(show._embedded.episodes.map(ep => ep.season)).size
+                show.episodes = show._embedded.episodes.length
+            }
             if (show._embedded.cast.length > 0)
                 show.cast = show._embedded.cast.map(item => item.person.name)
             if (show._embedded.crew.length > 0) {

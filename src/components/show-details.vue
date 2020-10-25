@@ -1,5 +1,5 @@
 <template>
-    <div class="text-body-1">
+    <div class="text-body-1 text-sm-subtitle-1">
         <v-row no-gutters>
             <v-col class="col-9 col-sm-6">
                 <v-img
@@ -19,7 +19,10 @@
                 </v-img>
             </v-col>
 
-            <v-col class="text-body-2 col-sm-6">
+            <v-col class="text-body-2 col-sm-6 px-sm-5">
+                <!-- Summary for not mobile -->
+                <show-details-summary v-if="!isMobile" :show="show" />
+
                 <!-- Cast -->
                 <p>
                     <span class="grey--text">Cast: </span>{{ castShort }}
@@ -37,28 +40,13 @@
             </v-col>
         </v-row>
 
-        <v-row no-gutters class="mt-5 text-body-1">
-            <v-col>
-                <!-- Show Name -->
-                <h2 class="show-name" :title="show.name">
-                    {{ show.name }}
-                </h2>
-
-                <!-- Year premiered and number of seasons-->
-                <div class="font-weight-medium mt-1">
-                    <span class="mr-3">{{ show.premiered.slice(0, 4) }}</span
-                    ><span v-if="show.seasons"
-                        >{{ show.seasons }} {{ pluralize('season', show.seasons) }}</span
-                    >
-                </div>
-                <p class="mt-5" v-html="show.summary"></p>
-            </v-col>
-        </v-row>
+        <!-- Summary -->
+        <show-details-summary v-if="isMobile" :show="show" class="mt-5" />
 
         <!-- More details -->
-        <v-row no-gutters class="mt-3">
+        <v-row no-gutters class="mt-3 mt-sm-5">
             <v-col>
-                <h2 class="mb-3">About {{ show.name }}</h2>
+                <h2 class="mb-3 font-weight-light">About {{ show.name }}</h2>
                 <p v-if="directors">
                     <a name="director"
                         ><span class="grey--text"
@@ -67,7 +55,8 @@
                     >{{ directors }}
                 </p>
                 <p>
-                    <a name="cast-full"><span class="grey--text">Cast: </span></a>{{ castFull }}
+                    <a name="cast-full"><span class="grey--text">Full cast: </span></a
+                    >{{ castFull }}
                 </p>
             </v-col>
         </v-row>
