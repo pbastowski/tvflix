@@ -5,7 +5,7 @@
                 <v-img
                     :contain="!isMobile"
                     class="rounded-sm mr-3"
-                    max-height="450"
+                    max-height="550"
                     :lazy-src="(show.image && show.image.medium) || noImageYet"
                     :src="(show.image && show.image.original) || noImageYet"
                 >
