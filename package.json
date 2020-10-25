@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "nuxt",
         "build": "nuxt build",
-        "serve": "cd dist && serve"
+        "serve": "cd dist && serve -s"
     },
     "devDependencies": {
         "@babel/plugin-proposal-optional-chaining": "7.12.1",
