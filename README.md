@@ -80,6 +80,11 @@ There could be far more work done on this app, but as a demonstration of how to 
 
 - Landing pages
     - these are Nuxt file-based vue-router routes, see ` src/pages `
+    - we have these routes (features) available currently
+        - Popular Shows
+        - Find shows by text search
+        - Display show details
+    - new features can be added by creating landing pages in the ` src/pages ` folder and integrating them with the rest of the system through reactive state, actions and getters in the file-based vuex store.
 - Reusable vue components
     - auto-registered by Nuxt when used, see ` src/components `
     - Vuetify UI components, grid system, colors, text, display and other helper CSS classes are used as much as possible to maintain a common approach to building the UI.
