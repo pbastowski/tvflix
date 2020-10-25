@@ -1,6 +1,10 @@
-import $ from 'jquery'
-
 const BASE_URL = 'https://api.tvmaze.com'
+
+// The config below is required to enable the CORS simple requests with fetch(),
+// which are required to access tvmaze API.
+//
+// Note: I could not get axios to work at all, because it insists on doing a
+// preflight, which disables simple requests and then we have all the CORS issues.
 const config = {
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -8,11 +12,7 @@ const config = {
 }
 
 export async function getShowById({ state, getters }, showId) {
-    // Try the store cache first
-    // let show = getters.getShowById(showId)
-    // if (show) return show
-
-    // If not found then fetch from the API
+    // Fetch from the API, also getting episodes, cast and crew
     return fetch(`${BASE_URL}/shows/${showId}?embed[]=episodes&embed[]=cast&embed[]=crew`, config)
         .then(d => d.json())
 
@@ -40,21 +40,12 @@ export async function getPopularShows({ state }) {
     if (popularShows) return (state.shows = popularShows)
 
     // If not then fetch them from the API - this will be very fast on a fast network
-    // return (popularShows = state.shows = await this.$axios
-    //     .$get(`${BASE_URL}/shows`, config)
-
-    // $.get(`${BASE_URL}/shows`, data => {
-    //     console.log('JQ:', data)
-    // })
-
     popularShows = state.shows = await fetch(`${BASE_URL}/shows`, config)
         .then(d => d.json())
         .then(nominalizeData)
 
     return popularShows
 }
-// fetch(`${BASE_URL}/search/shows?q=${searchText}`, config)
-//     .then(d => d.json())
 
 export async function searchByText({ state }, searchText) {
     return (state.shows = await fetch(`${BASE_URL}/search/shows?q=${searchText}`, config)
