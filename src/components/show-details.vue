@@ -27,9 +27,14 @@
                 <!-- Cast -->
                 <p v-if="castShort">
                     <span class="grey--text">Cast: </span>{{ isMobile ? castShort : castFull }}
-                    <template v-if="castMore"
+                    <template v-if="castMore && isMobile"
                         ><br />
-                        <nuxt-link to="#cast-full" class="grey--text">more</nuxt-link>
+                        <a
+                            href="javascript:"
+                            @click="$refs.castFull.scrollIntoView()"
+                            class="grey--text"
+                            >more</a
+                        >
                     </template>
                 </p>
 
@@ -67,7 +72,7 @@
                         </span></a
                     >{{ directors }}
                 </p>
-                <p v-if="castFull && isMobile">
+                <p ref="castFull" v-if="castFull && isMobile">
                     <a name="cast-full"><span class="grey--text">Full cast: </span></a
                     >{{ castFull }}
                 </p>
