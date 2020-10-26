@@ -8,6 +8,6 @@
 
         <v-spacer />
 
-        <options-menu />
+        <theme-toggle />
     </v-app-bar>
 </template>
