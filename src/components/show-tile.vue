@@ -1,5 +1,5 @@
 <template>
-    <div style="background: rgba(125, 125, 125, 0.1)" class="rounded">
+    <div style="background: rgba(125, 125, 125, 0.1); cursor: pointer" class="rounded">
         <v-img
             class="rounded-sm"
             :lazy-src="(show.image && show.image.medium) || noImageYet"
