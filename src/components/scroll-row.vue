@@ -40,6 +40,7 @@
         opacity: 0.5;
         background: rgba(128, 128, 128, 0.3);
         z-index: 1000;
+        height: 350px;
     }
 
     .left {
