@@ -2,7 +2,7 @@
     <!-- Summary -->
     <v-row no-gutters class="text-body-1">
         <v-col>
-            <div class="d-flex">
+            <div class="d-flex align-start">
                 <!-- Show Name -->
                 <h2 class="show-name" :title="show.name">
                     {{ show.name }}
