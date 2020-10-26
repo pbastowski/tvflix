@@ -1,6 +1,6 @@
 # TVFLIX
 
-Try trhe TVflix web app [here](https://tvflix.pbastowski.vercel.app)
+Try the TVflix web app [here](https://tvflix.pbastowski.vercel.app)
 
 ## Running TVflix locally
 
@@ -19,7 +19,7 @@ Nuxt will start up a dev server on http://localhost:3000 where you can see the a
 This app uses the following front-end frameworks and libraries
 
 - Nuxt - the Vue full-stack framework (not using any SSR in this app)
-- Vue - this app is built with Vue
+- Vue - this app is built with Vue, vue-router and vuex
 - Vuetify - the best Vue UI component framework
 - fetch API
 
@@ -27,8 +27,7 @@ This app uses the following front-end frameworks and libraries
 
 #### Vue
 
-As at 2020, Vue is one of the three big frameworks out there, those being React, Vue and Angular. I am not impressed with Angular, because it is overally complex. I can work with React and be satisfied with the results. 
-> However, working with Vue actually makes me happy.
+As at 2020, Vue is one of the three big frameworks out there, those being React, Vue and Angular. I am not impressed with Angular, because it is overally complex. I can work with React and be satisfied with the results. Working with Vue actually makes me happy.
 
 Beyond that, Vue is probably the easiest of all the above to learn and, if you just happen to be migrating web apps from AngularJs, then it's the easiest to migrate to. 
 
@@ -40,7 +39,7 @@ More info at https://vuejs.org/
 
 #### Nuxt
 
-Nuxt provides the perfect, almost zero config, development environment for Vue apps. It provides an architecture that one can follow, when building Vue apps, without having to invent too much. At the same time it makes it easier to develop all, but the simplest, Vue web apps.
+Nuxt is a full-stack Vue framework. It provides an almost zero config development environment for building Vue apps and establishes an architecture that one can immediately follow, without having to invent the basics of folder structures, routing or state management.
 
 I have used it at large organisations, developing huge front-end apps (150K lines of Vue code) and at small companies.
 
