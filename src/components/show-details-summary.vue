@@ -23,7 +23,7 @@
                 <show-rating :rating="show.rating.average" />
             </div>
 
-            <div class="font-weight-medium mt-1 d-flex">
+            <div class="font-weight-medium mt-3 d-flex">
                 <!-- Year premiered, number of seasons, episode count -->
                 <span v-if="show.premiered">{{ show.premiered.slice(0, 4) }}</span>
                 <span v-if="show.seasons" class="ml-3"
