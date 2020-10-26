@@ -6,7 +6,7 @@
                     :contain="!isMobile"
                     class="rounded-sm mr-3"
                     max-height="550"
-                    :lazy-src="(show.image && show.image.medium) || noImageYet"
+                    :lazy-src="(show.image && show.image.original) || noImageYet"
                     :src="(show.image && show.image.original) || noImageYet"
                 >
                     <template #placeholder>
@@ -94,7 +94,7 @@
                 return this.show?.cast?.join(', ')
             },
             castShort() {
-                return this.show?.cast?.slice(0, 4).join(', ')
+                return this.show?.cast?.slice(0, 3).join(', ')
             },
             castMore() {
                 return this.show?.cast?.length > 4

@@ -7,6 +7,17 @@
                 <h2 class="show-name" :title="show.name">
                     {{ show.name }}
                 </h2>
+
+                <!-- IMDB link -->
+                <v-spacer />
+                <a
+                    v-if="show.externals && show.externals.imdb"
+                    class="grey--text d-flex align-center"
+                    :href="`https://imdb.com/title/${show.externals.imdb}`"
+                >
+                    <i class="mdi mdi-open-in-new mr-1" />
+                    <img src="~/assets/imdb-logo.svg" alt="imdb logo" height="16px;" />
+                </a>
                 <v-spacer />
 
                 <show-rating :rating="show.rating.average" />
@@ -21,15 +32,6 @@
                 <span v-if="show.seasons" class="ml-3"
                     >{{ show.episodes }} {{ pluralize('episode', show.episodes) }}</span
                 >
-                <v-spacer />
-
-                <!-- IMDB link -->
-                <a
-                    v-if="show.externals && show.externals.imdb"
-                    class="ml-8"
-                    :href="`https://imdb.com/title/${show.externals.imdb}`"
-                    ><img src="~/assets/imdb-logo.svg" alt="imdb logo" height="16px;"
-                /></a>
             </div>
 
             <!-- Show Summary Description -->
