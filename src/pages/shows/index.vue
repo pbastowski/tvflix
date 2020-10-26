@@ -10,30 +10,31 @@
             </div>
 
             <!-- The show list row  -->
-            <div
-                :ref="`listRow${genre.genre}`"
-                class="overflow-x-auto overflow-y-hidden d-flex mx-n1 mb-sm-8 mb-4"
-                style="scroll-behavior: smooth; position: relative"
-            >
+            <div style="position: relative">
                 <scroll-row
                     v-if="!isMobile"
                     right
                     @scroll="scroll => scroll($refs[`listRow${genre.genre}`])"
                 />
-
-                <show-tile
-                    v-for="show in genre.shows"
-                    :key="show.id"
-                    :show="show"
-                    class="mx-1"
-                    @click.native="$router.push(`/shows/${show.id}`)"
-                />
-
                 <scroll-row
                     v-if="!isMobile"
                     left
                     @scroll="scroll => scroll($refs[`listRow${genre.genre}`])"
                 />
+
+                <div
+                    :ref="`listRow${genre.genre}`"
+                    class="overflow-x-auto overflow-y-hidden d-flex mx-n1 mb-sm-8 mb-4"
+                    style="scroll-behavior: smooth; position: relative"
+                >
+                    <show-tile
+                        v-for="show in genre.shows"
+                        :key="show.id"
+                        :show="show"
+                        class="mx-1"
+                        @click.native="$router.push(`/shows/${show.id}`)"
+                    />
+                </div>
             </div>
         </div>
     </div>
