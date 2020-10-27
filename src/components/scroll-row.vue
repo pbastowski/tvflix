@@ -39,7 +39,7 @@
         position: absolute;
         opacity: 0.5;
         background: rgba(128, 128, 128, 0.3);
-        z-index: 1000;
+        z-index: 4;
         height: 350px;
     }
 
