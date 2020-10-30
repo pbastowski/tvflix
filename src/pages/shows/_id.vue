@@ -1,11 +1,11 @@
 <template>
     <!-- On phones show without a card/border -->
-    <div v-if="isMobile" class="overflow-y-auto overflow-x-hidden" ref="showList">
+    <div v-if="isMobile" ref="showList">
         <show-details :show="show" />
     </div>
 
     <!-- On all other larger devices show the show details in a card -->
-    <v-row v-else no-gutters class="overflow-y-auto overflow-x-hidden">
+    <v-row v-else no-gutters>
         <v-col class="col-xs-12 col-sm-8 offset-sm-2 col-lg-6 offset-lg-3">
             <v-card ref="showList">
                 <v-card-text>

@@ -1,5 +1,5 @@
 <template>
-    <div ref="showList" class="overflow-y-auto overflow-x-hidden">
+    <div ref="showList">
         <div v-for="genre in $store.getters.getShows">
             <!-- Genre title and show count -->
             <div

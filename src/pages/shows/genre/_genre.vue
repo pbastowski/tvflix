@@ -1,5 +1,5 @@
 <template>
-    <div ref="showList" class="overflow-y-auto overflow-x-hidden">
+    <div ref="showList">
         <div
             class="text-sm-h4 text-xs-h6 text-capitalize"
             :class="[{ 'font-weight-light': $vuetify.breakpoint.smAndUp }]"
