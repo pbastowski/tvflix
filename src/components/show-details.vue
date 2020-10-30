@@ -8,16 +8,7 @@
                     max-height="550"
                     :lazy-src="(show.image && show.image.original) || noImageYet"
                     :src="(show.image && show.image.original) || noImageYet"
-                >
-                    <template #placeholder>
-                        <v-row class="fill-height ma-0" align="center" justify="center">
-                            <v-progress-circular
-                                indeterminate
-                                color="grey lighten-5"
-                            ></v-progress-circular>
-                        </v-row>
-                    </template>
-                </v-img>
+                />
             </v-col>
 
             <v-col class="text-body-2 col-sm-12 px-xs-5 mt-sm-8">
