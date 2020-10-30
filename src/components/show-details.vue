@@ -2,13 +2,17 @@
     <div class="text-body-1 text-sm-subtitle-1">
         <v-row no-gutters>
             <v-col class="col-9 col-sm-12">
-                <v-img
-                    :contain="!isMobile"
-                    class="rounded-sm mr-3"
-                    max-height="550"
-                    :lazy-src="(show.image && show.image.original) || noImageYet"
-                    :src="(show.image && show.image.original) || noImageYet"
-                />
+                <a
+                    :href="(show.image && show.image.original) || noImageYet"
+                    class="text-decoration-none"
+                    ><v-img
+                        :contain="!isMobile"
+                        class="rounded-sm mr-3"
+                        max-height="550"
+                        :lazy-src="(show.image && show.image.original) || noImageYet"
+                        :src="(show.image && show.image.original) || noImageYet"
+                    />
+                </a>
             </v-col>
 
             <v-col class="text-body-2 col-sm-12 px-xs-5 mt-sm-8">
