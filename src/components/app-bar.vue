@@ -4,7 +4,7 @@
         <v-btn icon @click="$router.back()"><v-icon>mdi mdi-arrow-left-bold</v-icon></v-btn>
         <v-spacer />
 
-        <search />
+        <search class="grow" />
 
         <v-spacer />
 

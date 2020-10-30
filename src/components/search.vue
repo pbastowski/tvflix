@@ -1,25 +1,31 @@
 <template>
-    <v-form @submit.prevent v-model="isValid" :style="{ 'min-width': isMobile ? '' : '50%' }">
+    <v-form @submit.prevent v-model="isValid" :style="{ 'max-width': isMobile ? '' : '400px' }">
         <v-text-field
+            class="tvflix-search"
             rounded
             dense
             hide-details
             prepend-inner-icon="mdi-magnify"
             outlined
-            :clearable="grow"
-            :style="{ 'max-width': grow ? '' : isMobile ? '70px' : '' }"
-            :class="{ grow }"
-            :rules="grow ? [allowedInputChars, minLength(3), maxLength(50)] : undefined"
+            clearable
+            :rules="searchText ? [allowedInputChars, minLength(3), maxLength(50)] : undefined"
             :value="searchText"
             @input="
                 searchText = $event ? $event : ''
                 debounceSearch($event)
             "
-            @focus="grow = true"
-            @blur="grow = !!searchText"
         />
     </v-form>
 </template>
+
+<style scoped>
+    .tvflix-search /deep/ .v-icon {
+        margin-left: -20px;
+    }
+    .tvflix-search /deep/ button.v-icon {
+        margin-right: -40px;
+    }
+</style>
 
 <script>
     import { allowedInputChars, maxLength, minLength } from '@/common/validators.js'
