@@ -73,8 +73,6 @@
                 </p>
             </v-col>
         </v-row>
-        <!--<hr />
-        <p>{{ show }}</p>-->
     </div>
 </template>
 
