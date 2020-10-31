@@ -1,5 +1,5 @@
 <template>
-    <v-form @submit.prevent v-model="isValid" :style="{ 'max-width': isMobile ? '' : '400px' }">
+    <v-form @submit.prevent v-model="isValid" :style="{ 'max-width': isMobile ? '60%' : '400px' }">
         <v-text-field
             class="tvflix-search"
             rounded
