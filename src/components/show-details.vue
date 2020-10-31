@@ -1,6 +1,6 @@
 <template>
     <div class="text-body-1 text-sm-subtitle-1">
-        <v-row no-gutters>
+        <v-row no-gutters class="flex-sm-wrap flex-nowrap">
             <v-col class="col-9 col-sm-12">
                 <a
                     :href="(show.image && show.image.original) || noImageYet"
