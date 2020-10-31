@@ -6,12 +6,7 @@
                 class="text-sm-h4 text-xs-h6 text-capitalize"
                 :class="[{ 'font-weight-light': $vuetify.breakpoint.smAndUp }]"
             >
-                <nuxt-link
-                    :to="`/shows/genre/${genre.genre}`"
-                    class="text-decoration-none"
-                    :class="[$vuetify.theme.dark ? 'white--text' : 'black--text']"
-                    >{{ genre.genre }}</nuxt-link
-                >
+                <genre-link :genre="genre.genre" />
                 <small>({{ genre.shows.length }})</small>
             </div>
 
