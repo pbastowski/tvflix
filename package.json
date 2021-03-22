@@ -9,11 +9,11 @@
         "serve": "cd dist && serve -s"
     },
     "devDependencies": {
-        "@babel/plugin-proposal-optional-chaining": "7.12.1",
-        "@mdi/font": "5.8.55",
-        "@nuxtjs/axios": "5.12.2",
-        "@nuxtjs/vuetify": "1.11.2",
+        "@babel/plugin-proposal-optional-chaining": "7.13.8",
+        "@mdi/font": "5.9.55",
+        "@nuxtjs/axios": "5.13.1",
+        "@nuxtjs/vuetify": "1.11.3",
         "lodash.debounce": "4.0.8",
-        "nuxt": "2.14.7"
+        "nuxt": "2.15.3"
     }
 }
